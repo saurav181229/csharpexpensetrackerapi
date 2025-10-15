@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 0,
+    "Category": "swimming",
+    "Description": "",
+    "amount": 9
+  },
+  {
+    "Id": 1,
+    "Category": "leisure",
+    "Description": "travle",
+    "amount": 5
+  },
+  {
+    "Id": 2,
+    "Category": "travel",
+    "Description": "kork",
+    "amount": 39
+  }
+]
