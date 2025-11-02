@@ -35,3 +35,4 @@
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/obj/Debug/net9.0/ExpenseTrackerAPI.sourcelink.json

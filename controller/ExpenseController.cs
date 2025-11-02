@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using expenseTrackerapi.model;
+using ExpenseTrackerAPI.DTO;
 using ExpenseTrackerAPI.model;
 using ExpenseTrackerAPI.services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace expenseTrackerapi.controller
@@ -20,40 +23,57 @@ namespace expenseTrackerapi.controller
             _expenseService = expenseService;
         }
 
+        [Authorize]
         [HttpGet("getExpenses")]
         public ActionResult<List<Expense>> GetExpenses()
         {
+            // var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var expenses = _expenseService.DisplayExpenses();
             return Ok(expenses);
         }
 
         [HttpPost("addExpense")]
-        public ActionResult AddExpense(Expense expense)
+        public ActionResult AddExpense([FromBody]ExpenseDto expense)
         {
-            bool newExpense = _expenseService.AddExpense(expense);
-            return Ok(newExpense);
+            bool isAdded = _expenseService.AddExpense(expense);
+            if (!isAdded)
+            return StatusCode(500, "Failed to add expense.");
+
+            return Ok(new { message = "Expense added successfully." });
         }
 
-        [HttpGet("deleteExpense/{id}")]
+        [HttpDelete("deleteExpense/{id}")]
         public ActionResult DeleteExpense(int id)
         {
-            Expense expense = _expenseService.DeleteExpense(id);
-            return Ok(expense);
+            int result = _expenseService.DeleteExpense(id);
+            if (result == 1) return StatusCode(200, "Deleted successfully");
+            else return Ok(new { messsage = "Unable to delete" });
         }
 
         [HttpGet("viewTotalExpenses")]
         public ActionResult ViewTotalExpenses()
         {
-            int expense = _expenseService.ViewTotalExpense();
+            decimal expense = _expenseService.ViewTotalExpense();
             return Ok(expense);
         }
 
 
-        [HttpGet("spendingByCategory")]
-        public ActionResult SpendingByCategory()
+
+
+        [HttpPut("UpdateExpense")]
+        public ActionResult UpdateExpense(ExpenseDto expense)
         {
-            List<SpendByCategory> exp =  _expenseService.SpendingByCategory();
-            return Ok(exp);
+            int result = _expenseService.UpdateExpense(expense);
+            if (result == 1) return StatusCode(200, "Updated successfully");
+            else return Ok(new { messsage = "Unable to Update" });
+
+        }
+
+   [HttpGet("SpendByCategory")]
+        public ActionResult SpendByCategory()
+        {
+            List<SpendByCategory> spends = _expenseService.SpendingByCategory();
+            return Ok(spends);
         }
 
 

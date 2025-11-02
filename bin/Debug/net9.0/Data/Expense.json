@@ -16,17 +16,5 @@
     "Category": "travel",
     "Description": "kork",
     "amount": 39
-  },
-  {
-    "Id": 4,
-    "Category": "gambling",
-    "Description": "casino",
-    "amount": 30
-  },
-  {
-    "Id": 5,
-    "Category": "food",
-    "Description": "briyani",
-    "amount": 13
   }
 ]

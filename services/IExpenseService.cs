@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using expenseTrackerapi.model;
+using ExpenseTrackerAPI.DTO;
 using ExpenseTrackerAPI.model;
 
 namespace ExpenseTrackerAPI.services
 {
     public interface IExpenseService
     {
-        public bool AddExpense(Expense expense);
+        public bool AddExpense(ExpenseDto expense);
       
 
         public List<Expense> DisplayExpenses();
        
 
-        public Expense DeleteExpense(int id);
+        public int DeleteExpense(int id);
        
     
-        public int ViewTotalExpense();
-       
+        public decimal ViewTotalExpense();
 
-        public List<SpendByCategory>  SpendingByCategory();
+
+        public List<SpendByCategory> SpendingByCategory();
+
+        public int UpdateExpense(ExpenseDto expense);
+        
 
 
        

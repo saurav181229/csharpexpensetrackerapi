@@ -3,84 +3,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using expenseTrackerapi.model;
+using ExpenseTrackerAPI.Data;
+using ExpenseTrackerAPI.DTO;
 using ExpenseTrackerAPI.model;
 
 namespace ExpenseTrackerAPI.services
 {
     public class ExpenseService: IExpenseService
     {
-        private IfileSerivice _fileService;
+        // private IfileSerivice _fileService;
+        private readonly ExpenseContext _context;
         private List<Expense> _expenses;
-        public ExpenseService(IfileSerivice fileService)
+  
+        private readonly int _UserId;
+        public ExpenseService(ExpenseContext Expensecont,IUserContextService UserContextService)
         {
-            _fileService = fileService;
-            _expenses = _fileService.LoadData();
+            _context = Expensecont;
+            _UserId = UserContextService.GetUserId();
+            // _expenses = _fileService.LoadData();
         }
 
         public List<Expense> DisplayExpenses()
         {
-            if (_expenses is not null && _expenses.Count > 0)
-            {
-                foreach (var expense in _expenses)
-                {
-                    Console.WriteLine($"ID: {expense.Id}, Amount: {expense.amount}, Category: {expense.Category}, Description: {expense.Description}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("No expenses to display.");
-            }
-            return _expenses;
+           
+            return _context.DisplayExpenses(_UserId); ;
+          
         }
 
-        public bool AddExpense(Expense expense)
+        public bool AddExpense(ExpenseDto expense)
         {
-            
-            expense.Id = SetNextId();
-            _expenses.Add(expense);
-            _fileService.SaveData(_expenses);
-            Console.WriteLine("Expense added successfully.");
+
+            _context.AddExpense(expense,_UserId);
             return true;
         }
         
-        public Expense DeleteExpense(int id)
+        public int DeleteExpense(int id)
         {
-            var expense = _expenses.FirstOrDefault(e => e.Id == id);
-            _expenses.Remove(expense);
-            if (expense == null)
-            {
-                Console.WriteLine($"Expense with ID {id} not found.");
-                return new Expense();
-            }
-            foreach(Expense exp in _expenses)
-            {
-                if(exp.Id > id)
-                {
-                    exp.Id -= 1;
-                }
-            }
-            _fileService.SaveData(_expenses);
-            return expense;
+            int result = _context.DeleteExpense(id,_UserId);
+            
+            
+            return result;
         }
 
-        public int ViewTotalExpense()
+        public decimal ViewTotalExpense()
         {
-            return _expenses.Sum(e => e.amount);
+            return _context.GetTotalExpense(_UserId);
         }
-        public List<SpendByCategory> SpendingByCategory()
+        public List<SpendByCategory>  SpendingByCategory()
         {
-            var catGroup = _expenses.GroupBy(e => e.Category)
-            .Select(g => new { Category = g.Key, TotalAmount = g.Sum(e => e.amount) });
-            return catGroup.Select(c => new SpendByCategory
-            {
-                Category = c.Category,
-                TotalAmount = c.TotalAmount
-            }).ToList();
+            
+            return _context.SpendByCategory(_UserId);
+            
         }
         private int SetNextId()
         {
-            return _expenses.Any() ? _expenses.Max(e => e.Id) +1: 1;
-            
+            return _expenses.Any() ? _expenses.Max(e => e.Id) + 1 : 1;
+
+        }
+        
+        public int UpdateExpense(ExpenseDto expense)
+        {
+            int res = _context.UpdateExpense(expense,_UserId);
+
+            return res;
         }
     }
 }
