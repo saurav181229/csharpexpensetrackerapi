@@ -1,9 +1,9 @@
-# 💰 Expense Tracker API  
+#  Expense Tracker API  
 > A full-stack backend project showcasing real-world software engineering principles using **.NET 8**, **Entity Framework Core**, **PostgreSQL**, **Docker**, and **CI/CD pipelines**.
 
 ---
 
-## 🧾 Overview
+##  Overview
 
 This project started as a simple **file-based expense tracker** and evolved into a **cloud-deployed, containerized API** with authentication, database persistence, and automated deployment.
 
@@ -15,7 +15,7 @@ It demonstrates:
 
 ---
 
-## 🧠 Tech Stack & Tools
+##  Tech Stack & Tools
 
 | Layer | Technology |
 |-------|-------------|
@@ -30,7 +30,7 @@ It demonstrates:
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```text
 Controllers (Presentation Layer)
@@ -40,3 +40,4 @@ Services (Business Logic)
 Data Layer (EF Core + Repository Pattern)
         ↓
 PostgreSQL (Containerized or Cloud)
+
