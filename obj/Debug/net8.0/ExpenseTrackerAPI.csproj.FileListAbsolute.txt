@@ -52,6 +52,8 @@
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/Microsoft.SqlServer.Server.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/Microsoft.Win32.SystemEvents.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/Mono.TextTemplating.dll
+/Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/Npgsql.dll
+/Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/SQLitePCLRaw.batteries_v2.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/SQLitePCLRaw.core.dll
 /Users/saurav/Desktop/csharprefresher/ExpenseTrackerAPI/bin/Debug/net8.0/SQLitePCLRaw.provider.e_sqlite3.dll
