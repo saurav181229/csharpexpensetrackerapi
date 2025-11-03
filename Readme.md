@@ -41,6 +41,7 @@ Data Layer (EF Core + Repository Pattern)
         ↓                                        
 PostgreSQL (Containerized or Cloud)
 ```
+---
 
 [swagger documentation](https://expensetracker-api-34kv.onrender.com/swagger/index.html)
 
@@ -51,3 +52,4 @@ PostgreSQL (Containerized or Cloud)
 
 
 ''
+
