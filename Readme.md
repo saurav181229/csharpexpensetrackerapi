@@ -42,11 +42,27 @@ Data Layer (EF Core + Repository Pattern)
 PostgreSQL (Containerized or Cloud)
 '''
 
-[link](https://expensetracker-api-34kv.onrender.com/swagger/index.html)
+Controllers (Presentation Layer)
+        ↓
+Services (Business Logic)
+        ↓
+Data Layer (EF Core + Repository Pattern)
+        ↓
+PostgreSQL (Containerized or Cloud)
+'''
 
 
+---
 
 [click here](https://expensetracker-api-34kv.onrender.com/swagger/index.html)
+
+
+
+
+
+
+[Live link](https://expensetracker-api-34kv.onrender.com/swagger/index.html)
+
 
 
 
